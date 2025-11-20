@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wideo Wizytówka - Oscarro Art Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5e6d3;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom: 3px solid #ff6b35;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 2px;
+            background: #ff6b35;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #f5e6d3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 .highlight {
+            color: #ff6b35;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: #0a0a0a;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #ff8555;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ff6b35;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #f5e6d3;
+            font-weight: 700;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+        }
+
+        .benefit-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: #1a1a1a;
+            padding: 50px 40px;
+            border-radius: 15px;
+            border: 2px solid #333;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: #ff6b35;
+            transform: scale(1.03);
+        }
+
+        .pricing-card.featured {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+        }
+
+        .pricing-card .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #ff6b35;
+            color: #0a0a0a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            color: #ff6b35;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1.2rem;
+            color: #f5e6d3;
+            opacity: 0.7;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .pricing-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Examples Section */
+        .example {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .example h4 {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .example .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .example .before, .example .after {
+            padding: 20px;
+            background: #0a0a0a;
+            border-radius: 10px;
+        }
+
+        .example .before h5, .example .after h5 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: #1a1a1a;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #333;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #2a2a2a;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            color: #ff6b35;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 30px;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 30px 25px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 80px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item .icon {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .contact-item a {
+            color: #f5e6d3;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b35;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: #000;
+            border-top: 2px solid #ff6b35;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .example .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-cta {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 15px 30px;
+            }
+        }
+
+        /* Badge/Tag styles */
+        .tag {
+            display: inline-block;
+            background: #ff6b35;
+            color: #0a0a0a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>WIDEO <span class="highlight">WIZYTÓWKA</span></h1>
+            <p>Ludzie kupują od ludzi, których znają. Daj im szansę poznać Ciebie.</p>
+            <a href="#kontakt" class="cta-button">Umów darmową konsultację</a>
+        </div>
+    </section>
+
+    <!-- Why Video Section -->
+    <section id="dlaczego">
+        <div class="container">
+            <h2>Dlaczego wideo wizytówka działa?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">🎥</div>
+                    <h3>Pokazujesz, nie tylko mówisz</h3>
+                    <p>Tekst mówi "prowadzę studio jogi". Wideo pokazuje Twoją przestrzeń, energię, pasję. To nie do zastąpienia słowami.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🤝</div>
+                    <h3>Ludzie kupują od ludzi</h3>
+                    <p>Klient widzi Twoją twarz, słyszy głos, obserwuje przestrzeń. Podświadomie decyduje: "Ta osoba mi pasuje" lub "To nie dla mnie".</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">📍</div>
+                    <h3>Budujesz wiarygodność</h3>
+                    <p>Pokazujesz swoje miejsce pracy, sprzęt, sposób działania. Wideo eliminuje 80% wątpliwości zanim klient zadzwoni.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🎬</div>
+                    <h3>Wielokrotne wykorzystanie</h3>
+                    <p>Jeden dzień nagrań = materiał na pół roku. Strona www, LinkedIn, Instagram, Stories, Reels, email marketing.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">⏰</div>
+                    <h3>Działa 24/7</h3>
+                    <p>Twoje wideo przekonuje klientów o 23:00, gdy Ty śpisz. Rano dostajesz maila: "Chcę umówić się na konsultację".</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">💰</div>
+                    <h3>Koszt firmowy</h3>
+                    <p>🎄 Koniec roku to ostatnia szansa! Zamiast płacić podatek, zainwestuj w marketing. Wideo = koszt firmowy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="cennik">
+        <div class="container">
+            <h2>Wybierz pakiet dla siebie</h2>
+            
+            <div class="pricing-grid">
+                <!-- Basic -->
+                <div class="pricing-card">
+                    <h3>PODSTAWOWY</h3>
+                    <div class="price">349€ <span>netto</span></div>
+                    <p style="margin-bottom: 20px;">Nagranie w studio w Rotterdamie</p>
+                    <ul>
+                        <li>Profesjonalne oświetlenie i dźwięk</li>
+                        <li>2 kamery = dynamiczny montaż</li>
+                        <li>Montaż wideo 3-5 minut</li>
+                        <li>Teleprompter (nie musisz pamiętać tekstu)</li>
+                        <li>Plik w jakości 4K</li>
+                        <li>1 runda poprawek</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-button">Wybieram</a>
+                </div>
+
+                <!-- Extended -->
+                <div class="pricing-card featured">
+                    <div class="badge">NAJPOPULARNIEJSZY</div>
+                    <h3>ROZSZERZONY</h3>
+                    <div class="price">549€ <span>netto</span></div>
+                    <p style="margin-bottom: 20px;">Nagranie u Ciebie + pokazanie przestrzeni</p>
+                    <ul>
+                        <li>Wszystko z pakietu PODSTAWOWEGO</li>
+                        <li>Nagranie u Ciebie (studio, gabinet, firma)</li>
+                        <li>Ujęcia Twojej pracy w akcji</li>
+                        <li>Pokazanie przestrzeni i sprzętu</li>
+                        <li>Montaż fabularny z muzyką</li>
+                        <li>Napisy w 1 języku (PL/EN/NL)</li>
+                        <li>2 wersje: pełna (3-5min) + krótka (60-90s)</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-button">Wybieram</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="pricing-card">
+                    <h3>PREMIUM</h3>
+                    <div class="price">949€ <span>netto</span></div>
+                    <p style="margin-bottom: 20px;">Wideo + podcast + reklamy Google Ads</p>
+                    <ul>
+                        <li>Wszystko z pakietu ROZSZERZONEGO</li>
+                        <li>Podcast sponsorowany (60-90 min)</li>
+                        <li>5-10 krótkich video clips</li>
+                        <li>Kampania Google Ads (200€ budżetu)</li>
+                        <li>Targetowanie Twojej grupy docelowej</li>
+                        <li>Raport z wyników po miesiącu</li>
+                    </ul>
+                    <a href="#kontakt" class="cta-button">Wybieram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="przyklady">
+        <div class="container">
+            <h2>Jak to wygląda w praktyce?</h2>
+
+            <div class="example">
+                <h4>Renia – instruktorka jogi i medytacji</h4>
+                <p><strong>Pakiet Rozszerzony (549€)</strong></p>
+                
+                <div class="before-after">
+                    <div class="before">
+                        <h5>❌ Bez wideo:</h5>
+                        <p>"Prowadzę zajęcia z jogi i medytacji dla Polaków w Rotterdamie"</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Klient myśli: Gdzie to jest? Jak to wygląda? Czy to poważna osoba?</em></p>
+                    </div>
+                    
+                    <div class="after">
+                        <h5>✅ Z wideo:</h5>
+                        <p>• Ujęcia studia (mandale, dywaniki, światło)<br>
+                        • Renia prowadzi zajęcia (pokazuje styl pracy)<br>
+                        • Opowiada o filozofii i dla kogo pracuje<br>
+                        • Kończy z jasnym CTA: jak umówić się na zajęcia</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Efekt: 70% decyzji pada PRZED kontaktem</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>Kasia – księgowa dla firm w NL</h4>
+                <p><strong>Pakiet Podstawowy (349€ wystarczy)</strong></p>
+                
+                <div class="before-after">
+                    <div class="before">
+                        <h5>❌ Bez wideo:</h5>
+                        <p>"Prowadzę księgowość dla polskich firm w Holandii"</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Bezpłciowa, sucha informacja. Brak zaufania.</em></p>
+                    </div>
+                    
+                    <div class="after">
+                        <h5>✅ Z wideo (studio):</h5>
+                        <p>Kasia mówi: "Od 8 lat pomagam polskim przedsiębiorcom ogarnąć holenderskie podatki..."<br><br>
+                        Ton ciepły, przystępny. Pokazuje, że to prawdziwa osoba, nie korporacja.</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Efekt: Klienci łatwiej się decydują na kontakt</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>Tomek – trener personalny</h4>
+                <p><strong>Pakiet Rozszerzony (549€)</strong></p>
+                
+                <div class="before-after">
+                    <div class="before">
+                        <h5>❌ Bez wideo:</h5>
+                        <p>Zdjęcie + tekst: "Trener personalny – pomogę Ci schudnąć"</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Nic nie wyróżnia od 100 innych trenerów</em></p>
+                    </div>
+                    
+                    <div class="after">
+                        <h5>✅ Z wideo (siłownia):</h5>
+                        <p>• Nagranie w siłowni, Tomek w akcji<br>
+                        • Mówi: "Nie wierzę w diety cud. Wierzę w systematyczność..."<br>
+                        • Pokazuje filozofię treningu, dla kogo pracuje (i dla kogo NIE)</p>
+                        <p style="margin-top: 15px; opacity: 0.7;"><em>Efekt: Odfiltrowanie niewłaściwych klientów, przyciągnięcie właściwych</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proces">
+        <div class="container">
+            <h2>Jak to działa krok po kroku?</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="benefit-card">
+                    <h3>1️⃣ Przygotowanie (PRZED nagraniem)</h3>
+                    <p>📋 Wypełniasz krótki formularz (kim jesteś, co robisz, dla kogo)<br>
+                    📞 Krótka rozmowa online (15-30 min) – ustalamy kluczowe punkty<br>
+                    📝 Przygotowuję scenariusz i tekst do telepromptera</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>2️⃣ Nagranie (dzień zdjęciowy)</h3>
+                    <p><strong>Pakiet Podstawowy:</strong> ~2h w moim studio<br>
+                    <strong>Pakiet Rozszerzony:</strong> ~3-4h u Ciebie (przyjeżdżam ze sprzętem)<br><br>
+                    ✅ Atmosfera bez presji – możemy powtórzyć fragment<br>
+                    ✅ Teleprompter – nie musisz pamiętać tekstu<br>
+                    ✅ Przerwy gdy potrzeba</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>3️⃣ Montaż (moja praca)</h3>
+                    <p>✂️ Wybieram najlepsze ujęcia<br>
+                    🎨 Usuwam "eee", pauzy, pomyłki<br>
+                    🎵 Kolorkorekcja, poprawa dźwięku, muzyka<br>
+                    ⏱️ Czas: 5-7 dni roboczych</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>4️⃣ Odbiór i poprawki</h3>
+                    <p>📧 Wysyłam link do wersji roboczej<br>
+                    🔄 Masz 1 rundę poprawek (wliczone w cenę)<br>
+                    ✅ Akceptujesz → dostajesz finalne pliki w 4K</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Najczęściej zadawane pytania</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Boję się kamery. Co jeśli będę się jąkać?</div>
+                <div class="faq-answer">
+                    To całkowicie normalne! 90% ludzi jest zestresowanych przed kamerą. Dlatego:<br>
+                    • Możemy nagrywać w częściach (nie musisz mówić 5 minut z rzędu)<br>
+                    • Masz teleprompter (czytasz kluczowe punkty)<br>
+                    • Możemy powtórzyć fragment tyle razy, ile trzeba<br>
+                    • Ja prowadzę rozmowę – pomagam się rozluźnić
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Nie mam pojęcia, co powiedzieć</div>
+                <div class="faq-answer">
+                    Dlatego przed nagraniem wypełniasz formularz i rozmawiamy. Na tej podstawie piszę Ci scenariusz – kluczowe punkty, które warto poruszyć. Ty tylko odpowiadasz na pytania swoimi słowami.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Jak długo trwa nagranie?</div>
+                <div class="faq-answer">
+                    • Pakiet Podstawowy (studio): ~2 godziny<br>
+                    • Pakiet Rozszerzony (u Ciebie): ~3-4 godziny<br><br>
+                    Nie śpieszymy się. Masz czas na przerwy.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Co jeśli nie spodoba mi się efekt?</div>
+                <div class="faq-answer">
+                    Masz jedną rundę poprawek wliczoną w cenę. Jeśli coś Ci nie pasuje (kolejność, tempo, montaż) – mówimy o tym, poprawiam.<br><br>
+                    Jeśli po prostu "nie lubisz, jak wyglądasz na wideo" – to naturalne, większość ludzi tak ma. Ale Twoi klienci widzą Cię inaczej niż Ty siebie.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Mogę wykorzystać wideo w moim marketingu?</div>
+                <div class="faq-answer">
+                    Tak! Dostajesz pełne prawa do wykorzystania materiału. Możesz publikować wszędzie: strona www, LinkedIn, YouTube, Facebook, Instagram, TikTok, email marketing, prezentacje.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Ile kosztują napisy w innych językach?</div>
+                <div class="faq-answer">
+                    Napisy w jednym języku (PL/EN/NL): wliczone w Pakiet Rozszerzony<br>
+                    Dodatkowe języki: +50€ za każdy język
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Jak daleko dojedziesz? (Pakiet Rozszerzony)</div>
+                <div class="faq-answer">
+                    Rotterdam i okolice (do ~30 km) – bez dopłaty<br>
+                    Dłuższe dojazdy (Amsterdam, Haga, Utrecht): +50-100€ w zależności od odległości
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-section" id="kontakt">
+        <div class="container">
+            <span class="tag">🎄 KONIEC ROKU = OSTATNIA SZANSA NA KOSZTY FIRMOWE</span>
+            <h2 style="color: #f5e6d3; margin-top: 20px;">Gotowy/a na profesjonalne wideo?</h2>
+            <p style="font-size: 1.3rem; margin: 20px 0;">Zamiast płacić podatek, zainwestuj w swoją markę</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <a href="mailto:info@oscarroart.com">info@oscarroart.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <a href="https://oscarroart.com" target="_blank">oscarroart.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <p>Studio w Rotterdamie</p>
+                </div>
+            </div>
+
+            <a href="mailto:info@oscarroart.com?subject=Zapytanie o wideo wizytówkę" class="cta-button" style="margin-top: 30px;">Wyślij zapytanie</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Oscarro Art Studio | Rotterdam, Holandia</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Profesjonalne wideo wizytówki dla ekspertów i przedsiębiorców</p>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA Button -->
+    <a href="#kontakt" class="sticky-cta cta-button">Umów nagranie 🎥</a>
+
+    <!-- JavaScript for FAQ accordion -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
