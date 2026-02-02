@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wideo Wizytówka - Oscarro Art Studio</title>
+    <meta name="description" content="Profesjonalne wideo wizytówki dla ekspertów i przedsiębiorców. Pokaż się w najlepszym świetle. Studio w Rotterdamie.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --gray: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .benefit-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .benefit-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .price-note {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 10px 0;
+            color: var(--gray);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .pricing-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pricing-button:hover {
+            background: #e55a2b;
+        }
+
+        /* Examples Section */
+        .examples {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .examples h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .example {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 40px;
+            background: var(--light);
+            border-radius: 15px;
+        }
+
+        .example h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .example .package {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .example h5 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            color: var(--dark);
+        }
+
+        .example p, .example ul {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .example ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .example li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .example li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .result {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .process h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .process-step {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .process-step p, .process-step ul {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .process-step ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .process-step li {
+            padding: 5px 0;
+        }
+
+        /* Example Video Section */
+        .example-video {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .faq-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .faq-item p, .faq-item ul {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .faq-item ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .faq-item li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .faq-item li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .benefits h2, .pricing h2, .examples h2, .process h2, .faq h2, .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                gap: 30px;
+            }
+
+            .floating-cta {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>WIDEO WIZYTÓWKA</h1>
+            <p>Ludzie kupują od ludzi, których znają. Daj im szansę poznać Ciebie.</p>
+            <a href="#kontakt" class="cta-button">Umów darmową konsultację</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Dlaczego wideo wizytówka działa?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="emoji">🎥</span>
+                    <h3>Pokazujesz, nie tylko mówisz</h3>
+                    <p>Tekst mówi "prowadzę studio jogi". Wideo pokazuje Twoją przestrzeń, energię, pasję. To nie do zastąpienia słowami.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="emoji">🤝</span>
+                    <h3>Ludzie kupują od ludzi</h3>
+                    <p>Klient widzi Twoją twarz, słyszy głos, obserwuje przestrzeń. Podświadomie decyduje: "Ta osoba mi pasuje" lub "To nie dla mnie".</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="emoji">📍</span>
+                    <h3>Budujesz wiarygodność</h3>
+                    <p>Pokazujesz swoje miejsce pracy, sprzęt, sposób działania. Wideo eliminuje 80% wątpliwości zanim klient zadzwoni.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="emoji">🎬</span>
+                    <h3>Wielokrotne wykorzystanie</h3>
+                    <p>Jeden dzień nagrań = materiał na pół roku. Strona www, LinkedIn, Instagram, Stories, Reels, email marketing.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="emoji">⏰</span>
+                    <h3>Działa 24/7</h3>
+                    <p>Twoje wideo przekonuje klientów o 23:00, gdy Ty śpisz. Rano dostajesz maila: "Chcę umówić się na konsultację".</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="emoji">🚀</span>
+                    <h3>Przewaga nad konkurencją</h3>
+                    <p>Podczas gdy inni mają tylko tekst i zdjęcia, Ty pokazujesz się w akcji. To game changer w budowaniu zaufania.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pakiety">
+        <div class="container">
+            <h2>Wybierz pakiet dla siebie</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>PODSTAWOWY</h3>
+                    <div class="price">349€</div>
+                    <div class="price-note">netto</div>
+                    <p style="margin-bottom: 30px; color: var(--dark); font-weight: 600;">Nagranie w studio w Rotterdamie</p>
+                    <ul>
+                        <li>Profesjonalne oświetlenie i dźwięk</li>
+                        <li>2 kamery = dynamiczny montaż</li>
+                        <li>Montaż wideo 3-5 minut</li>
+                        <li>Teleprompter (nie musisz pamiętać tekstu)</li>
+                        <li>Plik w jakości 4K</li>
+                        <li>1 runda poprawek</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-button">Wybieram</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="featured-badge">NAJPOPULARNIEJSZY</span>
+                    <h3>ROZSZERZONY</h3>
+                    <div class="price">549€</div>
+                    <div class="price-note">netto</div>
+                    <p style="margin-bottom: 30px; color: var(--dark); font-weight: 600;">Nagranie u Ciebie + pokazanie przestrzeni</p>
+                    <ul>
+                        <li>Wszystko z pakietu PODSTAWOWEGO</li>
+                        <li>Nagranie u Ciebie (studio, gabinet, firma)</li>
+                        <li>Ujęcia Twojej pracy w akcji</li>
+                        <li>Pokazanie przestrzeni i sprzętu</li>
+                        <li>Montaż fabularny z muzyką</li>
+                        <li>Napisy w 1 języku (PL/EN/NL)</li>
+                        <li>2 wersje: pełna (3-5min) + krótka (60-90s)</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-button">Wybieram</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>PREMIUM</h3>
+                    <div class="price">949€</div>
+                    <div class="price-note">netto</div>
+                    <p style="margin-bottom: 30px; color: var(--dark); font-weight: 600;">Wideo + podcast + reklamy Google Ads</p>
+                    <ul>
+                        <li>Wszystko z pakietu ROZSZERZONEGO</li>
+                        <li>Podcast sponsorowany (60-90 min)</li>
+                        <li>5-10 krótkich video clips</li>
+                        <li>Kampania Google Ads (200€ budżetu)</li>
+                        <li>Targetowanie Twojej grupy docelowej</li>
+                        <li>Raport z wyników po miesiącu</li>
+                    </ul>
+                    <a href="#kontakt" class="pricing-button">Wybieram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Video Section -->
+    <section class="example-video">
+        <div class="container">
+            <h2 class="section-title">Zobacz przykład wideo wizytówki</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Film, w którym opowiadasz o swojej pracy. Klient widzi Cię i słyszy – buduje zaufanie zanim zadzwoni. Większość ludzi ma tylko tekst i zdjęcie, Ty dajesz potencjalnym klientom coś więcej: mogą zobaczyć jak mówisz, poznać Twoją historię i misję jeszcze przed pierwszym kontaktem.
+            </p>
+            <div class="video-container">
+                <iframe 
+                    src="https://drive.google.com/file/d/1rlt7UmF1Gc9HCyGCdl7pujRuvAPBuG5d/preview" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples">
+        <div class="container">
+            <h2>Jak to wygląda w praktyce?</h2>
+
+            <div class="example">
+                <h4>Renia – instruktorka jogi i medytacji</h4>
+                <span class="package">Pakiet Rozszerzony (549€)</span>
+                
+                <h5>❌ Bez wideo:</h5>
+                <p>"Prowadzę zajęcia z jogi i medytacji dla Polaków w Rotterdamie"</p>
+                <p style="font-style: italic;">Klient myśli: Gdzie to jest? Jak to wygląda? Czy to poważna osoba?</p>
+
+                <h5>✅ Z wideo:</h5>
+                <ul>
+                    <li>Ujęcia studia (mandale, dywaniki, światło)</li>
+                    <li>Renia prowadzi zajęcia (pokazuje styl pracy)</li>
+                    <li>Opowiada o filozofii i dla kogo pracuje</li>
+                    <li>Kończy z jasnym CTA: jak umówić się na zajęcia</li>
+                </ul>
+                <div class="result">Efekt: 70% decyzji pada PRZED kontaktem</div>
+            </div>
+
+            <div class="example">
+                <h4>Kasia – księgowa dla firm w NL</h4>
+                <span class="package">Pakiet Podstawowy (349€ wystarczy)</span>
+                
+                <h5>❌ Bez wideo:</h5>
+                <p>"Prowadzę księgowość dla polskich firm w Holandii"</p>
+                <p style="font-style: italic;">Bezpłciowa, sucha informacja. Brak zaufania.</p>
+
+                <h5>✅ Z wideo (studio):</h5>
+                <p>Kasia mówi: "Od 8 lat pomagam polskim przedsiębiorcom ogarnąć holenderskie podatki..."</p>
+                <p>Ton ciepły, przystępny. Pokazuje, że to prawdziwa osoba, nie korporacja.</p>
+                <div class="result">Efekt: Klienci łatwiej się decydują na kontakt</div>
+            </div>
+
+            <div class="example">
+                <h4>Tomek – trener personalny</h4>
+                <span class="package">Pakiet Rozszerzony (549€)</span>
+                
+                <h5>❌ Bez wideo:</h5>
+                <p>Zdjęcie + tekst: "Trener personalny – pomogę Ci schudnąć"</p>
+                <p style="font-style: italic;">Nic nie wyróżnia od 100 innych trenerów</p>
+
+                <h5>✅ Z wideo (siłownia):</h5>
+                <ul>
+                    <li>Nagranie w siłowni, Tomek w akcji</li>
+                    <li>Mówi: "Nie wierzę w diety cud. Wierzę w systematyczność..."</li>
+                    <li>Pokazuje filozofię treningu, dla kogo pracuje (i dla kogo NIE)</li>
+                </ul>
+                <div class="result">Efekt: Odfiltrowanie niewłaściwych klientów, przyciągnięcie właściwych</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2>Jak to działa krok po kroku?</h2>
+
+            <div class="process-step">
+                <h3>1️⃣ Przygotowanie (PRZED nagraniem)</h3>
+                <p>
+                    📋 Wypełniasz krótki formularz (kim jesteś, co robisz, dla kogo)<br>
+                    📞 Krótka rozmowa online (15-30 min) – ustalamy kluczowe punkty<br>
+                    📝 Przygotowuję scenariusz i tekst do telepromptera
+                </p>
+            </div>
+
+            <div class="process-step">
+                <h3>2️⃣ Nagranie (dzień zdjęciowy)</h3>
+                <p>
+                    <strong>Pakiet Podstawowy:</strong> ~2h w moim studio<br>
+                    <strong>Pakiet Rozszerzony:</strong> ~3-4h u Ciebie (przyjeżdżam ze sprzętem)
+                </p>
+                <ul>
+                    <li>✅ Atmosfera bez presji – możemy powtórzyć fragment</li>
+                    <li>✅ Teleprompter – nie musisz pamiętać tekstu</li>
+                    <li>✅ Przerwy gdy potrzeba</li>
+                </ul>
+            </div>
+
+            <div class="process-step">
+                <h3>3️⃣ Montaż (moja praca)</h3>
+                <p>
+                    ✂️ Wybieram najlepsze ujęcia<br>
+                    🎨 Usuwam "eee", pauzy, pomyłki<br>
+                    🎵 Kolorkorekcja, poprawa dźwięku, muzyka<br>
+                    ⏱️ Czas: do 21 dni roboczych
+                </p>
+            </div>
+
+            <div class="process-step">
+                <h3>4️⃣ Odbiór i poprawki</h3>
+                <p>
+                    📧 Wysyłam link do wersji roboczej<br>
+                    🔄 Masz 1 rundę poprawek (wliczone w cenę)<br>
+                    ✅ Akceptujesz → dostajesz finalne pliki w 4K
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Najczęściej zadawane pytania</h2>
+
+            <div class="faq-item">
+                <h3>Boję się kamery. Co jeśli będę się jąkać?</h3>
+                <p>To całkowicie normalne! 90% ludzi jest zestresowanych przed kamerą. Dlatego:</p>
+                <ul>
+                    <li>Możemy nagrywać w częściach (nie musisz mówić 5 minut z rzędu)</li>
+                    <li>Masz teleprompter (czytasz kluczowe punkty)</li>
+                    <li>Możemy powtórzyć fragment tyle razy, ile trzeba</li>
+                    <li>Ja prowadzę rozmowę – pomagam się rozluźnić</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3>Nie mam pojęcia, co powiedzieć</h3>
+                <p>Dlatego przed nagraniem wypełniasz formularz i rozmawiamy. Na tej podstawie piszę Ci scenariusz – kluczowe punkty, które warto poruszyć. Ty tylko odpowiadasz na pytania swoimi słowami.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Jak długo trwa nagranie?</h3>
+                <p>
+                    • Pakiet Podstawowy (studio): ~2 godziny<br>
+                    • Pakiet Rozszerzony (u Ciebie): ~3-4 godziny
+                </p>
+                <p>Nie śpieszymy się. Masz czas na przerwy.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Co jeśli nie spodoba mi się efekt?</h3>
+                <p>Masz jedną rundę poprawek wliczoną w cenę. Jeśli coś Ci nie pasuje (kolejność, tempo, montaż) – mówimy o tym, poprawiam.</p>
+                <p>Jeśli po prostu "nie lubisz, jak wyglądasz na wideo" – to naturalne, większość ludzi tak ma. Ale Twoi klienci widzą Cię inaczej niż Ty siebie.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Mogę wykorzystać wideo w moim marketingu?</h3>
+                <p>Tak! Dostajesz pełne prawa do wykorzystania materiału. Możesz publikować wszędzie: strona www, LinkedIn, YouTube, Facebook, Instagram, TikTok, email marketing, prezentacje.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Ile kosztują napisy w innych językach?</h3>
+                <p>
+                    Napisy w jednym języku (PL/EN/NL): wliczone w Pakiet Rozszerzony<br>
+                    Dodatkowe języki: +50€ za każdy język
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Jak daleko dojedziesz? (Pakiet Rozszerzony)</h3>
+                <p>
+                    Rotterdam i okolice (do ~30 km) – bez dopłaty<br>
+                    Dłuższe dojazdy (Amsterdam, Haga, Utrecht): +50-100€ w zależności od odległości
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <h2>Gotowy/a na profesjonalne wideo?</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="emoji">📧</span>
+                    <a href="/cdn-cgi/l/email-protection#5e373038311e312d3d3f2c2c313f2c2a703d3133"><span class="__cf_email__" data-cfemail="d3babdb5bc93bca0b0b2a1a1bcb2a1a7fdb0bcbe">[email&#160;protected]</span></a>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">🌐</span>
+                    <a href="https://oscarroart.com" target="_blank">oscarroart.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">📍</span>
+                    <p>Studio w Rotterdamie</p>
+                </div>
+            </div>
+            <a href="/cdn-cgi/l/email-protection#10797e767f507f63737162627f7162643e737f7d2f6365727a7573642d4a71606964717e7975307f30677974757f3067796a6964d3a3677bd489" class="cta-button">Wyślij zapytanie</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Oscarro Art Studio | Rotterdam, Holandia</p>
+           
